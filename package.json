@@ -111,6 +111,7 @@
     "ximalaya"
   ],
   "devDependencies": {
+    "@babel/core": "^7.4.4",
     "@types/jest": "^24.0.12",
     "awesome-typescript-loader": "^5.2.1",
     "cross-env": "^5.2.0",

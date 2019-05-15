@@ -38,7 +38,8 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder:wine \
-        /bin/bash -c "yarn --link-duplicates --pure-lockfile && yarn dist --linux --win"
+        /bin/bash -c "yarn --link-duplicates --pure-lockfile && yarn release --linux --win"
+
     else
       yarn dist
     fi
@@ -47,18 +48,18 @@ script:
 # Specify the tag to target in draft release instead for now via $TRAVIS_TAG
 before_deploy:
   - export TRAVIS_TAG="preview"
-
 # Deploy to Github Releases as draft release or update the existing one with the above `tag_name` value(any existing files will be overwritten)
-deploy:
-  provider: releases
-  api_key: $GH_TOKEN
-  skip_cleanup: true
-  draft: true
-  overwrite: true
-  file_glob: true
-  file:
-    - dist/*.exe
-    - dist*.zip
-    - dist/*.dmg
-    - dist/*.snap
-    - dist/*.AppImage
+
+# deploy:
+#   provider: releases
+#   api_key: $GH_TOKEN
+#   skip_cleanup: true
+#   draft: true
+#   overwrite: true
+#   file_glob: true
+#   file:
+#     - dist/*.exe
+#     - dist*.zip
+#     - dist/*.dmg
+#     - dist/*.snap
+#     - dist/*.AppImage
